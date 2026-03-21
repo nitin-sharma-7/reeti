@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
-import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin, FaPhone, FaMailBulk } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
+import { CiMail } from "react-icons/ci";
+import { IoIosMail } from "react-icons/io";
 
 const Footer = () => {
   return (
@@ -20,11 +23,11 @@ const Footer = () => {
               Quick Links
             </h4>
             <ul className="space-y-3 text-gray-400 text-sm font-light">
-              <li><Link to="/" className="hover:text-brand transition-colors">Home</Link></li>
-              <li><Link to="/shop" className="hover:text-brand transition-colors">Shop</Link></li>
-              <li><Link to="/about" className="hover:text-brand transition-colors">About Us</Link></li>
-              <li><Link to="/contact" className="hover:text-brand transition-colors">Contact Us</Link></li>
-              <li><Link to="/blogs" className="hover:text-brand transition-colors">Blogs</Link></li>
+              <li className="text-gray-400 hover:text-brand transition-all hover:-translate-y-1"><Link to="/" className="hover:text-brand transition-colors">Home</Link></li>
+              <li className="text-gray-400 hover:text-brand transition-all hover:-translate-y-1"><Link to="/shop" className="hover:text-brand transition-colors">Shop</Link></li>
+              <li className="text-gray-400 hover:text-brand transition-all hover:-translate-y-1"><Link to="/about" className="hover:text-brand transition-colors">About Us</Link></li>
+              <li className="text-gray-400 hover:text-brand transition-all hover:-translate-y-1"><Link to="/contact" className="hover:text-brand transition-colors">Contact Us</Link></li>
+              <li className="text-gray-400 hover:text-brand transition-all hover:-translate-y-1"><Link to="/blogs" className="hover:text-brand transition-colors">Blogs</Link></li>
             </ul>
           </div>
 
@@ -34,11 +37,11 @@ const Footer = () => {
               Information
             </h4>
             <ul className="space-y-3 text-gray-400 text-sm font-light">
-              <li><Link to="/privacy-policy" className="hover:text-brand transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/terms-and-conditions" className="hover:text-brand transition-colors">Terms & Conditions</Link></li>
-              <li><Link to="/return-policy" className="hover:text-brand transition-colors">Return Policy</Link></li>
-              <li><Link to="/return-policy" className="hover:text-brand transition-colors">Refund Policy</Link></li>
-              <li><Link to="/shipping-policy" className="hover:text-brand transition-colors">Shipping Policy</Link></li>
+              <li className="text-gray-400 hover:text-brand transition-all hover:-translate-y-1"><Link to="/privacy-policy" className="hover:text-brand transition-colors">Privacy Policy</Link></li>
+              <li className="text-gray-400 hover:text-brand transition-all hover:-translate-y-1"><Link to="/terms-and-conditions" className="hover:text-brand transition-colors">Terms & Conditions</Link></li>
+              <li className="text-gray-400 hover:text-brand transition-all hover:-translate-y-1"><Link to="/return-policy" className="hover:text-brand transition-colors">Return Policy</Link></li>
+              <li className="text-gray-400 hover:text-brand transition-all hover:-translate-y-1"><Link to="/return-policy" className="hover:text-brand transition-colors">Refund Policy</Link></li>
+              <li className="text-gray-400 hover:text-brand transition-all hover:-translate-y-1"><Link to="/shipping-policy" className="hover:text-brand transition-colors">Shipping Policy</Link></li>
             </ul>
           </div>
 
@@ -48,16 +51,16 @@ const Footer = () => {
               Contact Info
             </h4>
             <ul className="space-y-4 text-gray-400 text-sm font-light">
-              <li className="flex items-start gap-3">
-                <span className="text-brand">📍</span>
+              <li className="flex items-start gap-3 text-gray-400 hover:text-brand transition-all hover:-translate-y-1  ">
+                <span className="text-brand"><FaLocationDot/></span>
                 <span>Jaipur, Rajasthan, India</span>
               </li>
-              <li className="flex items-center gap-3">
-                <span className="text-brand">📞</span>
+              <li className="flex items-center gap-3 text-gray-400 hover:text-brand transition-all hover:-translate-y-1">
+                <span className="text-brand"><FaPhone/></span>
                 <span>+91 800-123456</span>
               </li>
-              <li className="flex items-center gap-3">
-                <span className="text-brand">✉️</span>
+              <li className="flex items-center gap-3 text-gray-400 hover:text-brand transition-all hover:-translate-y-1">
+                <span className="text-brand"><IoIosMail /></span>
                 <span>info@reeti.com</span>
               </li>
             </ul>

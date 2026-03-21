@@ -3,8 +3,18 @@ import MultiRangeSlider from "./MultiRangeSlider";
 
 const filterData = [
   {
-    id: 0,
+    id: 1,
     title: "Product Categories",
+    type: "list",
+    data: [
+      "Jewellery",
+      "Home Decor",
+      "Textiles",
+    ],
+  },
+  {
+    id: 2,
+    title: "Product Sub-Categories",
     type: "list",
     data: [
       "Handcrafted Brass Accents",

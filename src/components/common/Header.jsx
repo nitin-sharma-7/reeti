@@ -69,22 +69,22 @@ const handleLeave = () => {
   return (
     <header
       className={`fixed pt-2 w-full top-0 z-50 transition-all ${
-        scroll > 80 ? "bg-black shadow-md" : "bg-transparent"
+        scroll > 80 ? "bg-black" : " backdrop-blur-[6px]  "
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-20">
 
         {/* Logo */}
-        <Link to="/">
+        <Link to="/" >
           <img
             src={scroll > 80 ? img2 : img}
             alt="logo"
-            className="h-20 object-contain"
+            className="h-16 object-contain"
           />
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-6 font-medium">
+        <ul className="hidden md:flex items-center gap-6 font-bold">
           {menuItems.map((item, i) => (
             <li key={i}>
               <Link
@@ -122,16 +122,7 @@ const handleLeave = () => {
         : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
     }`}
   >
-    {[
-      "Handcrafted Brass Accents",
-      "Artisan Animal Figurines",
-      "Designer Vases & Decor Pieces",
-      "Curated Earrings Collection",
-      "Elegant Storage Solutions",
-      "Divine Idols",
-      "Heritage Bandhani Sarees",
-      "Premium Suit Fabrics (Unstitched)",
-    ].map((cat, i) => (
+    {["Jwellery","home decore","Textile"].map((cat, i) => (
       <Link
         key={i}
         to={`/product/${cat.toLowerCase().replace(/\s+/g, "-")}`}
@@ -251,16 +242,7 @@ const handleLeave = () => {
             <li className="mt-2 pt-2 border-t border-gray-800">
               <span className="text-gray-500 text-xs uppercase font-bold px-2">Categories</span>
               <ul className="flex flex-col gap-2 mt-2">
-                {[
-                  "Handcrafted Brass Accents",
-                  "Artisan Animal Figurines",
-                  "Designer Vases & Decor Pieces",
-                  "Curated Earrings Collection",
-                  "Elegant Storage Solutions",
-                  "Divine Idols",
-                  "Heritage Bandhani Sarees",
-                  "Premium Suit Fabrics (Unstitched)"
-                ].map((cat, i) => (
+                {["Jwellery","home decore","Textile"].map((cat, i) => (
                   <li key={i}>
                     <Link
                       // to={`/shop/${cat.toLowerCase().replace(/\s+/g, '-')}`}

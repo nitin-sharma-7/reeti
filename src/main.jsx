@@ -18,18 +18,14 @@ import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import TermsAndConditions from './pages/TermsAndConditions.jsx'
 import ReturnRefundPolicy from './pages/ReturnPolicy.jsx'
 import ShippingPolicy from './pages/ShippingPolicy.jsx'
+import  ErrorPage  from './pages/Errorpage.jsx'
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: (
-        <div>
-            <h1>404</h1>
-            <p>Page not found</p>
-        </div>
-    ),
+    errorElement: <ErrorPage/>,
     children: [
       {
         index: true,
