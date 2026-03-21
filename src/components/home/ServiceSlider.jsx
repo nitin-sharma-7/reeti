@@ -73,7 +73,7 @@ const ServiceSlider = ({ services, title, desc }) => {
                 : index % 2 === 2
                 ? "md:mt-40"
                 : "md:mt-0";
-               console.log(offset);
+              //  console.log(offset);
             return (
               <SwiperSlide key={index}>
                 <div className={`relative group text-center`}>

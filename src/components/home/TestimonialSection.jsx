@@ -58,8 +58,9 @@ const TestimonialSection = () => {
           }}
           // pagination={{ clickable: true }}
           breakpoints={{
-            768: { slidesPerView: 1.5 },
-            1024: { slidesPerView: 3 },
+            1200: { slidesPerView: 3 },
+            640: { slidesPerView: 2 },
+            0: { slidesPerView: 1 },
           }}
         >
           {[...testimonials, ...testimonials, ...testimonials].map((item, index) => (

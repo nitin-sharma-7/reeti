@@ -68,18 +68,18 @@ const handleLeave = () => {
 };
   return (
     <header
-      className={`fixed pt-2 w-full top-0 z-50 transition-all ${
+      className={`fixed py-2 w-full top-0 z-50 transition-all ${
         scroll > 80 ? "bg-black" : " backdrop-blur-[6px]  "
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-20">
+      <div className="w-full mx-auto px-4 md:px-10 flex items-center justify-between h-16">
 
         {/* Logo */}
         <Link to="/" >
           <img
             src={scroll > 80 ? img2 : img}
             alt="logo"
-            className="h-16 object-contain"
+            className="h-16 object-contain "
           />
         </Link>
 
