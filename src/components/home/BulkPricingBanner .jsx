@@ -2,7 +2,7 @@ import React from "react";
 
 const BulkPricingBanner = () => {
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between bg-[#FCFCFA] border border-[#EFE5D5] rounded-xl p-2 sm:p-3 shadow-sm w-7xl mx-auto gap-4 sm:gap-0">
+    <div className="flex flex-col sm:flex-row items-center justify-between bg-[#FCFCFA] border border-[#EFE5D5] rounded-xl p-2 sm:p-3 shadow-sm max-w-7xl mx-auto gap-4 sm:gap-0">
       
       {/* Left Side: Icon & Text */}
       <div className="flex items-center gap-3 sm:gap-4 pl-1 sm:pl-2">

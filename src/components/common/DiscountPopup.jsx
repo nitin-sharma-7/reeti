@@ -20,16 +20,17 @@ const DiscountPopup = () => {
   // Handle smooth fade-in animation
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => setIsVisible(true), 50); // slight delay to allow DOM to render before animating
-    } else {
-      setTimeout(() => setIsOpen(false), 500); // Wait for fade out
-      setIsVisible(false);
+      const timer = setTimeout(() => setIsVisible(true), 50); // slight delay to allow DOM to render before animating
+      return () => clearTimeout(timer);
     }
   }, [isOpen]);
 
   const handleClose = () => {
-    setIsOpen(false);
+    setIsVisible(false);
     sessionStorage.setItem("discountPopupSeen", "true");
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 500);
   };
 
   if (!isOpen && !isVisible) return null;
