@@ -20,7 +20,7 @@ const ContactSection = () => {
           </h5>
 
           <h2 className="text-4xl font-serif font-semibold">
-            Get In Touch
+          <span className="text-[#c5a47e]">Vendor ? </span>  Get in touch
           </h2>
         </div>
 

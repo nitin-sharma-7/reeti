@@ -69,7 +69,7 @@ const handleLeave = () => {
   return (
     <header
       className={`fixed py-2 w-full top-0 z-50 transition-all ${
-        scroll > 80 ? "bg-black" : " backdrop-blur-[6px]  "
+        scroll > 80 ? "bg-[#8c8366]" : " backdrop-blur-[20px]  "
       }`}
     >
       <div className="w-full mx-auto px-4 md:px-10 flex items-center justify-between h-16">

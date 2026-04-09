@@ -5,6 +5,8 @@ import ServiceSlider from '../components/home/ServiceSlider';
 import VideoSection from '../components/home/VideoSection';
 import TestimonialSection from '../components/home/TestimonialSection';
 import ContactSection from '../components/common/ContactSection';
+import StatsSection from '../components/home/StatsSection';
+import BulkPricingBanner from '../components/home/BulkPricingBanner ';
 const categories = [
   {
     id: "01",
@@ -114,6 +116,8 @@ const Home = () => {
     <VideoSection/>
     <ServiceSlider services={crafts} title="Our Crafts" desc="Explore the rich heritage of Indian crafts, where every product is a testament to skilled craftsmanship and cultural legacy." />
     <TestimonialSection/>
+    <BulkPricingBanner/>
+    <StatsSection/>
     <ContactSection/>
     
     </>

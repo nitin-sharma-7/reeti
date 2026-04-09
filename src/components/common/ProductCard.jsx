@@ -1,138 +1,91 @@
-import {
-  FaShoppingCart,
-  FaEye,
-  FaHeart,
-  FaStar,
-  FaStarHalfAlt,
-  FaRegStar,
-} from "react-icons/fa";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi"; 
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade } from "swiper/modules";
+const ProductCard = ({ img = [], title, price, oldPrice, link = "#" }) => {
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
-import "swiper/css";
-import "swiper/css/effect-fade";
+  // Handle Left Arrow Click
+  const prevImage = (e) => {
+    e.preventDefault(); 
+    e.stopPropagation();
+    setCurrentImgIndex((prev) => (prev === 0 ? img.length - 1 : prev - 1));
+  };
 
-const ProductCard = ({
-  images = [], // 👈 now array
-  title,
-  price,
-  oldPrice,
-  rating = 4.5,
-  link = "/product/7394",
-}) => {
-  // ⭐ Rating Logic
-  const renderStars = () => {
-    const stars = [];
-    const full = Math.floor(rating);
-    const half = rating % 1 !== 0;
-
-    for (let i = 0; i < full; i++) {
-      stars.push(<FaStar key={`f-${i}`} />);
-    }
-
-    if (half) {
-      stars.push(<FaStarHalfAlt key="half" />);
-    }
-
-    while (stars.length < 5) {
-      stars.push(<FaRegStar key={`e-${stars.length}`} />);
-    }
-
-    return stars;
+  // Handle Right Arrow Click
+  const nextImage = (e) => {
+    e.preventDefault(); 
+    e.stopPropagation();
+    setCurrentImgIndex((prev) => (prev === img.length - 1 ? 0 : prev + 1));
   };
 
   return (
-    <div className="group text-center">
-
-      {/* IMAGE SLIDER */}
-      <div className="relative overflow-hidden">
-
-        <Link to={link}>
-            <Swiper
-              modules={[Autoplay, EffectFade]}
-              effect="fade"
-              fadeEffect={{ crossFade: true }} // 👈 smooth fade
-              autoplay={{
-                delay: 2000,
-                disableOnInteraction: false,
-              }}
-              loop
-              speed={3000} // 👈 smooth transition speed
-              className="w-full pointer-events-none"
-            >
-            {images.map((img, i) => (
-              <SwiperSlide key={i}>
-                <img
-                  src={img}
-                  alt={title}
-                  className="w-full h-auto object-cover transition duration-500 group-hover:scale-105"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+    <div className="group flex flex-col gap-3 relative cursor-pointer h-full">
+      
+      {/* --- IMAGE CONTAINER --- */}
+      <div className="relative aspect-[3/4] overflow-hidden bg-gray-100">
+        
+        <Link to={link} className="block w-full h-full">
+          {/* Active Image */}
+          <img
+            src={img[currentImgIndex]}
+            alt={title}
+            className="w-full h-full object-cover transition-all duration-300"
+          />
         </Link>
 
-        {/* HOVER BAR */}
-        <div className="
-          absolute z-100 left-0 bottom-1/2 translate-y-1/2 w-full
-          opacity-0 group-hover:opacity-100
-          transition duration-500
-        ">
-          <div className="
-            mx-auto w-[80%]
-           bg-brand
-            py-3 flex justify-center gap-6
-            text-white text-lg
-            rounded-md shadow-lg
-          ">
-            <button className="hover:scale-110 transition">
-              <Link to="/cart">
-              <FaShoppingCart />
-              </Link>
+        {/* LEFT / RIGHT ARROWS */}
+        {img.length > 1 && (
+          <>
+            <button
+              onClick={prevImage}
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white text-black p-2 rounded-full shadow-md opacity-0 group-hover:opacity-70 transition-opacity duration-300"
+            >
+              <FiChevronLeft size={22} />
             </button>
-
-            <Link to={link} className="hover:scale-110 transition">
-              <FaEye />
-            </Link>
-
-            <button className="hover:scale-110 transition">
-              <Link to="/wishlist">
-              <FaHeart />
-              </Link>
+            <button
+              onClick={nextImage}
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white text-black p-2 rounded-full shadow-md opacity-0 group-hover:opacity-70 transition-opacity duration-300"
+            >
+              <FiChevronRight size={22} />
             </button>
-          </div>
-        </div>
-
+          </>
+        )}
       </div>
 
-      {/* CONTENT */}
-      <div className="mt-4">
+      {/* --- DETAILS & BUTTONS CONTAINER --- */}
+      <div className="flex flex-col px-1 pt-1 flex-1">
 
-        <h6 className="font-medium">
-          <Link to={link} className="hover:text-gray-500">
+        {/* Title */}
+        <h6 className="text-[15px] text-gray-800 leading-tight mb-1.5 truncate">
+          <Link to={link} className="hover:underline">
             {title}
           </Link>
         </h6>
 
-        {/* RATING */}
-        <div className="flex justify-center gap-1 text-yellow-400 text-sm mt-2">
-          {renderStars()}
-        </div>
-
-        {/* PRICE */}
-        <div className="mt-2 text-sm">
+        {/* Price & Old Price */}
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-[15px] text-gray-900 font-medium">
+            {price}
+          </span>
           {oldPrice && (
-            <span className="line-through text-gray-400 mr-2">
+            <span className="text-[14px] text-gray-400 line-through">
               {oldPrice}
             </span>
           )}
-          <span className="text-pink-500 font-semibold">
-            {price}
-          </span>
         </div>
 
+        {/* --- HOVER BUTTONS (BELOW TEXT) --- */}
+        {/* They take up space but remain invisible until hover */}
+        <div className="mt-auto pt-2 grid grid-cols-2 gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+           <button className="border border-black text-black text-[12px] uppercase tracking-wider font-medium py-2 hover:bg-black hover:text-white transition duration-300 text-center">
+             Quick View
+           </button>
+           <button className="bg-black border border-black text-white text-[12px] uppercase tracking-wider font-medium py-2 hover:bg-gray-800 hover:border-gray-800 transition duration-300 text-center">
+             Add to Cart
+           </button>
+        </div>
+        
       </div>
 
     </div>

@@ -28,6 +28,10 @@ const initialCart = [
 ========================= */
 const Cart = () => {
   const [cart, setCart] = useState(initialCart);
+  const [promoInput, setPromoInput] = useState("");
+  const [discount, setDiscount] = useState(0);
+  const [promoMsg, setPromoMsg] = useState("");
+  const [promoError, setPromoError] = useState(false);
 
   /* =========================
      HANDLERS
@@ -64,8 +68,22 @@ const Cart = () => {
     0
   );
 
+  const applyPromoCode = () => {
+    const code = promoInput.trim().toUpperCase();
+    if (code === "REETI10" || code === "WELCOME10") {
+      setDiscount(10); // 10% discount
+      setPromoMsg("Promo code applied successfully!");
+      setPromoError(false);
+    } else {
+      setDiscount(0);
+      setPromoMsg("Invalid promo code");
+      setPromoError(true);
+    }
+  };
+
+  const discountAmount = (subtotal * discount) / 100;
   const shipping = subtotal > 2000 ? 0 : 100;
-  const total = subtotal + shipping;
+  const total = subtotal - discountAmount + shipping;
 
   return (
     <div className="">
@@ -156,8 +174,15 @@ const Cart = () => {
 
               <div className="flex justify-between">
                 <span>Subtotal</span>
-                <span>₹{subtotal}</span>
+                <span>₹{subtotal.toFixed(2)}</span>
               </div>
+
+              {discount > 0 && (
+                <div className="flex justify-between text-green-600">
+                  <span>Discount ({discount}%)</span>
+                  <span>-₹{discountAmount.toFixed(2)}</span>
+                </div>
+              )}
 
               <div className="flex justify-between">
                 <span>Shipping</span>
@@ -168,8 +193,33 @@ const Cart = () => {
 
               <div className="border-t pt-3 flex justify-between font-semibold">
                 <span>Total</span>
-                <span>₹{total}</span>
+                <span>₹{Math.max(0, total).toFixed(2)}</span>
               </div>
+            </div>
+
+            {/* PROMO CODE */}
+            <div className="mt-6">
+              <label className="text-sm font-medium mb-2 block">Promo Code</label>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  placeholder="Enter code (e.g. REETI10)"
+                  className="w-full border border-gray-300 rounded px-3 py-2 text-sm outline-none focus:border-brand"
+                  value={promoInput}
+                  onChange={(e) => setPromoInput(e.target.value)}
+                />
+                <button
+                  onClick={applyPromoCode}
+                  className="bg-black text-white px-4 py-2 rounded text-sm hover:opacity-80 transition"
+                >
+                  Apply
+                </button>
+              </div>
+              {promoMsg && (
+                <p className={`text-xs mt-2 ${promoError ? 'text-red-500' : 'text-green-500'}`}>
+                  {promoMsg}
+                </p>
+              )}
             </div>
 
             {/* CTA */}
